@@ -7,7 +7,7 @@
 //spawn-at-startup "sh" "-c" "~/startup-apps.sh"
 //spawn-at-startup "mako"
 
-//spawn-at-startup "swww-daemon"
+spawn-at-startup "swww-daemon"
 spawn-at-startup "kdeconnect-indicator"
 //spawn-at-startup "swaync"
 spawn-at-startup "nm-applet --indicator"
@@ -195,7 +195,7 @@ layout {
     struts {
         left 18
         right 18
-         top 30
+         top 33
          //top 0
         bottom 0
     }
