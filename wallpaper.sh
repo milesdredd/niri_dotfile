@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-DEFAULT_WALLPAPER_DIR="/home/milesdredd/Pictures/wallpapers/cars/"
+DEFAULT_WALLPAPER_DIR="/home/milesdredd/Pictures/wallpapers/"
 INDEX_FILE="/home/milesdredd/.config/niri/.wallpaper_index"
 
 

@@ -1,24 +1,28 @@
 //https://docs.noctalia.dev/getting-started/keybinds/
 
 
-/- https://yalter.github.io/niri/Configuration%3A-Introduction.html
+//- https://yalter.github.io/niri/Configuration%3A-Introduction.html
 //spawn-at-startup "qs" "-c" "noctalia-shell"
 //spawn-at-startup "blueman-applet"
 //spawn-at-startup "sh" "-c" "~/startup-apps.sh"
-//spawn-at-startup "mako"
 
-spawn-at-startup "swww-daemon"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "eww" "daemon"
+spawn-at-startup "eww" "open" "bar"
+spawn-at-startup "eww" "open" "quickbar"
 spawn-at-startup "kdeconnect-indicator"
 //spawn-at-startup "swaync"
 spawn-at-startup "nm-applet --indicator"
+spawn-at-startup "wl-paste --watch cliphist store"
 //spawn-at-startup "sh" "-c" "bin/brave" "--profile-directory=1 --app=https://www.notion.so/"
 //spawn-at-startup "sh" "-c" "~/.config/niri/idle.sh"
 spawn-at-startup "xwayland-satellite"
 
 // START UP APPS
-spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://www.notion.so/"
+//spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://www.notion.so/"
+spawn-sh-at-startup "wlsunset -l 0 -L 0 -t 5800 -T 5801"
 spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://streak-sphere.vercel.app/dashboard"
-
+spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://play.google.com/store/account/subscriptions"
 //spawn-at-startup "niri" "msg" "action" "focus-workspace-down"
 
 hotkey-overlay {
@@ -28,8 +32,9 @@ hotkey-overlay {
 
 debug {
 
-    //render-drm-device "/dev/dri/card0"
-
+    render-drm-device "/dev/dri/card1"
+// card1 = igpu
+// card0 = rtx
 }
 environment{
     DISPLAY ":0"
@@ -37,6 +42,7 @@ environment{
     XDG_CURRENT_DESKTOP "Niri"
     XDG_SESSION_DESKTOP "Niri"
     GTK_USE_PORTAL "1"
+
 	//n8n envs
 	DB_SQLITE_POOL_SIZE "1"
 	N8N_RUNNERS_ENABLED "true"
@@ -50,7 +56,7 @@ prefer-no-csd
 
 
 overview{
-    zoom 0.29
+    zoom 0.25
 }
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
@@ -76,7 +82,7 @@ input {
     mouse {
         // off
         // natural-scroll
-         accel-speed -0.6
+         accel-speed -0.7
         // accel-profile "flat"
         // scroll-method "no-scroll"
     }
@@ -87,13 +93,12 @@ cursor {
     hide-when-typing
     hide-after-inactive-ms 1000
 
-   xcursor-theme "Night Diamond (Blue)"
-//Bibata-Modern-Ice
+   xcursor-theme "Bibata-Modern-Ice"
 //
+//Night Diamond (Blue)
 //Elastic
 //
 //
-
     xcursor-size 16
 }
 
@@ -107,9 +112,9 @@ output "eDP-1" {
 
     // off
     focus-at-startup
-    mode "1920x1080@144.002"
-    //mode "1920x1080@60.001"
-    variable-refresh-rate
+   mode "1920x1080@144.002"
+    // mode "1920x1080@60.001"
+    //variable-refresh-rate
     //can use integer;example use 1.5 for 150% scale.
     scale 1
     transform "normal"
@@ -145,7 +150,7 @@ layout {
         proportion 1.0
         fixed 720
         }
-    default-column-width { proportion 0.7; }
+    default-column-width { proportion 1.0; }
     //background-color "#6a6fd9"
     background-color "#00000000"
   //    draw-border-with-background
@@ -162,15 +167,16 @@ layout {
     border {
 
         //off
-        width 10
-        active-color "#2b2b2b"
-        inactive-color "#2C2C2CFF"
+        width 6
+     //   active-color "#2b2b2b"
+        active-color "#2e2e32"
+        inactive-color "#28282c"
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
     shadow {
          on
-         draw-behind-window true
+         draw-behind-window false
         softness 18
         spread 1
         offset x=0 y=0
@@ -297,12 +303,23 @@ animations {
 
 }
 layer-rule {
-	match namespace="^swww-daemon$"
-	match namespace="^noctalia-background-eDP-1"
-	match namespace="^noctalia-wallpaper-eDP-1"
+	match namespace="^awww-daemon$"
 
     //match namespace="^mpv$"
 	place-within-backdrop true
+}
+window-rule {
+    match app-id="Loupe"
+
+    popups {
+        // Matches the default libadwaita pop-up corner radius.
+        geometry-corner-radius 15
+        opacity 0.75
+
+        background-effect {
+            blur true
+        }
+    }
 }
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
@@ -340,10 +357,45 @@ window-rule {
     min-height 656
     max-height 656
 }
+window-rule {
+    match app-id="^*$"
+    opacity 0.88
+    background-effect {
+        blur true
+        xray true
+    }
+}
+layer-rule {
+    match namespace="^rofi$"
+    geometry-corner-radius 35
+    opacity 0.7
+
+    background-effect {
+        blur true
+        noise 0.00
+    }
+}
+window-rule {
+    match app-id="Nautilus"
+
+    popups {
+        // Matches the default libadwaita pop-up corner radius.
+        geometry-corner-radius 15
+
+        // Note: it'll look better to set background opacity
+        // through your GTK theme CSS and not here.
+        // This is just an example that makes it look obvious.
+        opacity 0.5
+
+        background-effect {
+            blur true
+        }
+    }
+}
 
 
 window-rule {
-    geometry-corner-radius 15
+    geometry-corner-radius 11
     clip-to-geometry true
 }
 
@@ -359,6 +411,7 @@ binds {
     Mod+Backspace {spawn "systemctl" "suspend";}
     Mod+N {spawn "bash" "-c" "swaync-client -t";}
     
+    Alt+r {spawn "bash" "-c" "pkill eww && eww open bar && eww open quickbar";}
     
     Mod+Ctrl+BracketLeft {spawn "bash" "-c" "eww update rqb=false";}
     Mod+Ctrl+BracketRight {spawn "bash" "-c" "eww update rqb=true";}
@@ -368,6 +421,7 @@ binds {
     Mod+A hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun" "-theme" "/home/milesdredd/.config/rofi/styles/style_3.rasi"; }
     Super+Alt+P hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
     Mod+E {spawn "dolphin";}
+    Mod+Ctrl+v {spawn "bash" "-c" "cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy";}
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -387,8 +441,8 @@ binds {
      XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-; eww update volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}')"; }
      XF86AudioMute        allow-when-locked=true { spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; eww update volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}')"; }
      XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-     XF86MonBrightnessDown  allow-when-locked=true { spawn "sh" "-c" "brightnessctl set 10%-; eww update brightness=$(brightnessctl -m | cut -d, -f4 | tr -d '%')";}
-     XF86MonBrightnessUp allow-when-locked=true { spawn "sh" "-c" "brightnessctl set +11%; eww update brightness=$(brightnessctl -m | cut -d, -f4 | tr -d '%')";}
+     XF86MonBrightnessDown  allow-when-locked=true { spawn "sh" "-c" "brightnessctl set 5%-; eww update brightness=$(brightnessctl -m | cut -d, -f4 | tr -d '%')";}
+     XF86MonBrightnessUp allow-when-locked=true { spawn "sh" "-c" "brightnessctl set +5%; eww update brightness=$(brightnessctl -m | cut -d, -f4 | tr -d '%')";}
    //--------//
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
@@ -397,6 +451,7 @@ binds {
     Mod+O repeat=false { toggle-overview; }
     //Mod+Shift+q repeat=false { spawn "xkill"}
     Mod+Q     { close-window; }
+    Alt+F4   {close-window;}
     Mod+Alt+down{ focus-window-down; }
     Mod+Alt+J { focus-window-down; }
     Mod+Alt+up{ focus-window-up; }
