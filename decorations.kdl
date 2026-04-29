@@ -6,37 +6,41 @@ blur {
     noise 0.00
     saturation 1.8
 }
-
 layout {
+    border {
+        // off
+        width 2
+        active-color "#212121"
+        inactive-color "#212121"
+        urgent-color "#9b0000"
+    }
+    tab-indicator {
+        // off
+        //hide-when-single-tab
+        place-within-column
+        gap 8
+        width 8
+        length total-proportion=0.4
+        position "left"
+        gaps-between-tabs 19
+        corner-radius 7
+        active-color "#59FF9E"
+        inactive-color "#42B5E3"
+        urgent-color "red"
+    }
     focus-ring {
-        off
+        // off
         width 0.1
         // active-color "#383838FF"
-        active-color "#6e6e6e80"
-        //active-gradient from="#42B5E3" to="#57C785" angle=90
-        //active-gradient from="#0091ff" to="#9000ff" angle=45
+        active-color "#2b2b2b"
         inactive-color "#6e6e6e80"
-
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-    }
-    border {
-
-        //off
-        width 6
-     //   active-color "#2b2b2b"
-        active-color "#2e2e32"
-
-        inactive-color "#2e2e32"
-        // inactive-color "#28282c"
-        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
     shadow {
          on
          draw-behind-window false
         softness 9
-        spread 3
+        spread 4
         offset x=0 y=0
-        color "#000000"
+        color "#000000cc"
     }
 }
