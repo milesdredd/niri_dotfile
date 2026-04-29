@@ -114,9 +114,9 @@ output "eDP-1" {
     focus-at-startup
    mode "1920x1080@144.002"
     // mode "1920x1080@60.001"
-    //variable-refresh-rate
+    variable-refresh-rate
     //can use integer;example use 1.5 for 150% scale.
-    scale 1
+    scale 1.5
     transform "normal"
     position x=0 y=0
 
@@ -359,7 +359,7 @@ window-rule {
 }
 window-rule {
     match app-id="^*$"
-    opacity 0.88
+    opacity 0.9
     background-effect {
         blur true
         xray true
@@ -367,24 +367,17 @@ window-rule {
 }
 layer-rule {
     match namespace="^rofi$"
-    geometry-corner-radius 35
-    opacity 0.7
-
+    geometry-corner-radius 30
     background-effect {
         blur true
-        noise 0.00
+        xray true
     }
 }
 window-rule {
     match app-id="Nautilus"
 
     popups {
-        // Matches the default libadwaita pop-up corner radius.
         geometry-corner-radius 15
-
-        // Note: it'll look better to set background opacity
-        // through your GTK theme CSS and not here.
-        // This is just an example that makes it look obvious.
         opacity 0.5
 
         background-effect {
