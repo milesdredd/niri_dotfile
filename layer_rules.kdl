@@ -1,0 +1,15 @@
+// Layer Rules
+layer-rule {
+	match namespace="^awww-daemon$"
+
+    //match namespace="^mpv$"
+	place-within-backdrop true
+}
+layer-rule {
+    match namespace="^rofi$"
+    geometry-corner-radius 30
+    background-effect {
+        blur true
+        xray true
+    }
+}

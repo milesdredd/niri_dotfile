@@ -1,0 +1,55 @@
+// Animation settings.
+// The wiki explains how to configure individual animations:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
+animations {
+    // off
+    slowdown 1
+
+    // Individual animations.
+    overview-open-close {
+        spring damping-ratio=1.6 stiffness=1000 epsilon=0.0001
+    }
+    workspace-switch {
+        spring damping-ratio=1.5 stiffness=900 epsilon=0.0009
+    }
+
+    window-open {
+
+        duration-ms 550
+        curve "ease-out-cubic"
+    }
+
+
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.6 stiffness=900 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=1.4 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=2.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=1.6 stiffness=1000 epsilon=0.001
+    }
+
+    exit-confirmation-open-close {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+
+}

@@ -1,0 +1,79 @@
+// Window Rules
+window-rule {
+    match app-id="Loupe"
+
+    popups {
+        // Matches the default libadwaita pop-up corner radius.
+        geometry-corner-radius 15
+        opacity 0.75
+
+        background-effect {
+            blur true
+        }
+    }
+}
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+//    match app-id=r#"mpv"#
+   open-floating true
+   }
+
+   //security
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+}
+
+window-rule {
+    match app-id="^blender$"
+
+    // GIMP app ID contains the version like "gimp-2.99",
+    // so we only match the beginning (with ^) and not the end.
+    match app-id="^gimp"
+
+    default-column-width { fixed 1080; }
+}
+window-rule {
+    match title=".* - YouTube$" is-floating=true
+
+    min-width 1164
+    max-width 1164
+    min-height 656
+    max-height 656
+}
+//blur config at line  no.60
+window-rule {
+    match app-id="^*$"
+    opacity 0.96
+    background-effect {
+        blur true
+        xray true
+    }
+}
+window-rule {
+    match app-id="^*$"
+
+
+    popups {
+        geometry-corner-radius 15
+        opacity 0.7
+
+        background-effect {
+            blur true
+            xray false
+        }
+    }
+}
+
+
+window-rule {
+    geometry-corner-radius 11
+    clip-to-geometry true
+}
