@@ -1,6 +1,6 @@
 layout{
     struts{
-        top 20
+        top 0
         left 6
         bottom 0
         right 6
