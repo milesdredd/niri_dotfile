@@ -2,10 +2,11 @@
 window-rule {
     match app-id="Loupe"
     popups {
-        geometry-corner-radius 15
+        geometry-corner-radius 2
         opacity 0.75
         background-effect {
             blur true
+            xray false
         }
     }
 }
@@ -36,13 +37,14 @@ window-rule {
     // min-height 656
     max-height 656
 }
-//blur config at line  no.60
+
+
 window-rule {
     match app-id="^*$"
-    opacity 0.96
+    opacity 1.00
     background-effect {
-        blur true
-        xray true
+        blur false
+        xray false
     }
 }
 window-rule {
@@ -50,18 +52,15 @@ window-rule {
 
 
     popups {
-        geometry-corner-radius 15
-        opacity 0.7
+        geometry-corner-radius 10
+        opacity 1.00
 
         background-effect {
-            blur true
+            blur false
             xray false
         }
     }
 }
 
 
-window-rule {
-    geometry-corner-radius 11
-    clip-to-geometry true
-}
+

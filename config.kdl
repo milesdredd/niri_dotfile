@@ -6,31 +6,75 @@
 //spawn-at-startup "blueman-applet"
 //spawn-at-startup "sh" "-c" "~/startup-apps.sh"
 
-spawn-at-startup "awww-daemon"
+//spawn-at-startup "awww-daemon"
 spawn-at-startup "eww" "daemon"
 spawn-at-startup "eww" "open" "bar"
+spawn-at-startup "eww" "open" "widget"
+spawn-at-startup "eww" "open" "task"
 spawn-at-startup "eww" "open" "quickbar"
 spawn-at-startup "kdeconnect-indicator"
 //spawn-at-startup "swaync"
 spawn-at-startup "nm-applet --indicator"
-spawn-at-startup "wl-paste --watch cliphist store"
+spawn-sh-at-startup "wl-paste --watch cliphist store"
 //spawn-at-startup "sh" "-c" "bin/brave" "--profile-directory=1 --app=https://www.notion.so/"
 //spawn-at-startup "sh" "-c" "~/.config/niri/idle.sh"
 spawn-at-startup "xwayland-satellite"
 // START UP APPS
 //spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://www.notion.so/"
+spawn-sh-at-startup "wayvnc 0.0.0.0 5900 --render-cursor --output DP-1"
 spawn-sh-at-startup "wlsunset -l 0 -L 0 -t 5800 -T 5801"
-spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://streak-sphere.vercel.app/dashboard"
-spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://play.google.com/store/account/subscriptions"
+spawn-sh-at-startup "python ~/.config/eww/yuck/widgets/Dnotes/dnotes.py prev"
+//spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://streak-sphere.vercel.app/dashboard"
+//spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://play.google.com/store/account/subscriptions"
+//spawn-sh-at-startup "/bin/brave --profile-directory=1 --app=https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design"
 //spawn-at-startup "niri" "msg" "action" "focus-workspace-down"
+
+// by running `niri msg outputs` while inside a niri instance.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+output "eDP-1" {
+    // off
+    focus-at-startup
+    mode "1920x1080@144.002"
+    // mode "1920x1080@60.001"
+   variable-refresh-rate
+    //background-color "#4c5b6b"
+    //can use integer;example use 1.5 for 150% scale.
+    scale 1
+    transform "normal"
+    position x=0 y=0
+    backdrop-color "#65578f"
+}
+output "DP-1"{
+    //rn11 display
+    off
+// wayvnc 0.0.0.0 5900 --render-cursor --output DP-1
+    //   mode "1024x768@60.004"
+   // mode "640x480@59.940"
+   mode "848x480@60.000"
+    position x=700 y=-480
+    //transform "90"
+    scale 1
+
+    //background-color "#9661ff"
+}
+
 
 hotkey-overlay {
     skip-at-startup
 }
 debug {
-    render-drm-device "/dev/dri/card1"
-// card1 = igpu
-// card0 = rtx
+    force-disable-connectors-on-resume
+    emulate-zero-presentation-time
+    disable-resize-throttling
+    render-drm-device "/dev/dri/renderD128"
+    deactivate-unfocused-windows
+//     Intel:
+//     /dev/dri/card1
+//     /dev/dri/renderD128
+//
+//     NVIDIA:
+//     /dev/dri/card0
+//     /dev/dri/renderD129
 }
 environment{
     DISPLAY ":0"
@@ -50,7 +94,7 @@ environment{
 }
 prefer-no-csd
 overview{
-    zoom 0.25
+    zoom 0.3
 }
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 // Input device configuration.
@@ -67,80 +111,78 @@ input {
         tap
         natural-scroll
         accel-speed 0.2
-        //disabled-on-external-mouse
+        dwt
+      //  disabled-on-external-mouse
+        //scroll-method "edge"
     }
     mouse {
         // off
         // natural-scroll
          accel-speed -0.7
-        // accel-profile "flat"
+        accel-profile "flat"
+        scroll-factor 1.0
+        // scroll-factor vertical=1.0 horizontal=-2.0
         // scroll-method "no-scroll"
+        // scroll-button 273
+        // scroll-button-lock
+        // left-handed
+         middle-emulation
     }
     focus-follows-mouse
 }
 cursor {
     hide-when-typing
     hide-after-inactive-ms 1000
-   xcursor-theme "Bibata-Modern-Ice"
+   xcursor-theme "GoogleDot-White"
+//Bibata-Modern-Ice
 //
-//Night Diamond (Blue)
 //Elastic
-//
-    xcursor-size 16
-}
-// by running `niri msg outputs` while inside a niri instance.
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-output "eDP-1" {
-    // off
-    focus-at-startup
-   mode "1920x1080@144.002"
-    // mode "1920x1080@60.001"
-    variable-refresh-rate
-    //can use integer;example use 1.5 for 150% scale.
-    scale 1.5
-    transform "normal"
-    position x=0 y=0
-}
-output "DP-1"{
-    //rn11 display
-    off
-
-    mode "1024x768@60.004"
-    position x=1920 y=580
-    //background-color "#7e49a6"
-    background-color "#004173"
-
+//Night Diamond (Blue)
+    xcursor-size 8
 }
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
-    gaps 4
+    gaps 10
      empty-workspace-above-first
      //default-column-display "tabbed"
     center-focused-column "never"
-    always-center-single-column
+    //always-center-single-column
     preset-column-widths {
-        proportion 1.0
+       proportion 0.85
        proportion 0.5
     }
     preset-window-heights {
         proportion 0.5
+
         proportion 1.0
         fixed 720
         }
-    default-column-width { proportion 1.0; }
-    //background-color "#6a6fd9"
-    background-color "#00000000"
-  //    draw-border-with-background
-
-
-    struts {
-        left 18
-        right 18
-        top 33
-         //top 0
-        bottom 0
+    default-column-width { proportion 0.8; }
+    // 0.1 -> 1A (17 in decimal)
+    // 0.2 -> 33 (51 in decimal)
+    // 0.3 -> 4D (77 in decimal)
+    // 0.4 -> 66 (102 in decimal)
+    // 0.5 -> 80 (128 in decimal)
+    // 0.6 -> 99 (153 in decimal)
+    // 0.7 -> B3 (179 in decimal)
+    // 0.8 -> CC (204 in decimal)
+    // 0.9 -> E6 (230 in decimal)
+    // 1.0 -> FF (255 in decimal)
+   //background-color "#ffffff1a"
+   //background-color "#ffffff1A"
+    background-color "transparent"
+   // draw-border-with-background
+    border {
+        // off
+        width 6
+        active-color "#262626"
+   //   active-gradient from="#53527a" to="#527a74" angle=45 in="oklch decreasing hue"
+        inactive-color "#262626"
+        urgent-color "#de4923"
     }
+
+
      /-insert-hint {
         // off
         on
@@ -153,7 +195,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 recent-windows {
     // off
-    debounce-ms 20
+    debounce-ms 200
 
     open-delay-ms 0
 
@@ -174,11 +216,6 @@ recent-windows {
         Alt+Shift+Tab   { previous-window; }
         Alt+grave       { next-window     filter="app-id"; }
         Alt+Shift+grave { previous-window filter="app-id"; }
-
-        Mod+Tab         { next-window; }
-        Mod+Shift+Tab   { previous-window; }
-        Mod+grave       { next-window     filter="app-id"; }
-        Mod+Shift+grave { previous-window filter="app-id"; }
     }
 }
 

@@ -12,7 +12,7 @@ binds {
     Mod+Backspace {spawn "systemctl" "suspend";}
     Mod+N {spawn "bash" "-c" "swaync-client -t";}
     
-    Alt+r {spawn "bash" "-c" "pkill eww && eww open bar && eww open quickbar";}
+    Alt+r {spawn "bash" "-c" "pkill eww && eww open widget && eww open bar && eww open quickbar && eww open task";}
     
     Mod+Ctrl+BracketLeft {spawn "bash" "-c" "eww update rqb=false";}
     Mod+Ctrl+BracketRight {spawn "bash" "-c" "eww update rqb=true";}
@@ -40,7 +40,7 @@ binds {
     // or do a four-finger swipe up on a touchpad.
     Mod+O repeat=false { toggle-overview; }
     //Mod+Shift+q repeat=false { spawn "xkill"}
-    Mod+Q     { close-window; }
+    Mod+Q  repeat=false   { close-window; }
     Alt+F4   {close-window;}
     Mod+Alt+down{ focus-window-down; }
     Mod+Alt+J { focus-window-down; }

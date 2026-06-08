@@ -3,39 +3,46 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 animations {
     // off
-    slowdown 1
+    slowdown 0.9
 
     // Individual animations.
     overview-open-close {
-        spring damping-ratio=1.6 stiffness=1000 epsilon=0.0001
+        spring damping-ratio=0.56 stiffness=300 epsilon=0.00404
+        //spring damping-ratio=0.10 stiffness=200 epsilon=0.00004
+      //  curve "cubic-bezier" 0.32 0.73 0.31 1.13
     }
     workspace-switch {
-        spring damping-ratio=1.5 stiffness=900 epsilon=0.0009
+       spring damping-ratio=0.66 stiffness=200 epsilon=0.00100
     }
 
     window-open {
 
-        duration-ms 550
-        curve "ease-out-cubic"
+   //     duration-ms 550
+ //curve "ease-out-cubic"
+           // curve "cubic-bezier" 0.26 1.23 0.72 1.17
+          //spring damping-ratio=0.66 stiffness=200 epsilon=0.00100
+        spring damping-ratio=1.50 stiffness=600 epsilon=0.00354
     }
 
 
 
     window-close {
-        duration-ms 150
-        curve "ease-out-quad"
+       // duration-ms 150
+       // curve "ease-out-quad"
+       spring damping-ratio=0.66 stiffness=200 epsilon=0.00100
     }
 
     horizontal-view-movement {
-        spring damping-ratio=1.6 stiffness=900 epsilon=0.0001
+        spring damping-ratio=0.66 stiffness=350 epsilon=0.00001
+
     }
 
     window-movement {
-        spring damping-ratio=1.4 stiffness=800 epsilon=0.0001
+        spring damping-ratio=0.60 stiffness=200 epsilon=0.00001
     }
 
     window-resize {
-        spring damping-ratio=2.0 stiffness=800 epsilon=0.0001
+        spring damping-ratio=0.66 stiffness=200 epsilon=0.00100
     }
 
     config-notification-open-close {
@@ -43,12 +50,13 @@ animations {
     }
 
     exit-confirmation-open-close {
-        spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+        spring damping-ratio=0.66 stiffness=200 epsilon=0.00100
     }
 
     screenshot-ui-open {
-        duration-ms 200
-        curve "ease-out-quad"
+       // duration-ms 200
+        //curve "ease-out-quad"
+        spring damping-ratio=0.66 stiffness=200 epsilon=0.00100
     }
 
 

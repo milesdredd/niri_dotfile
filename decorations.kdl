@@ -1,19 +1,17 @@
 // Decorations
 blur {
     // off
-    passes 3
-    offset 3
-    noise 0.00
-    saturation 1.8
+    passes 4
+    offset 4
+    noise 0.03
+    saturation 2
+}
+window-rule {
+    geometry-corner-radius 14
+    clip-to-geometry true
 }
 layout {
-    border {
-        // off
-        width 2
-        active-color "#212121"
-        inactive-color "#212121"
-        urgent-color "#9b0000"
-    }
+
     tab-indicator {
         // off
         //hide-when-single-tab
@@ -29,18 +27,18 @@ layout {
         urgent-color "red"
     }
     focus-ring {
-        // off
-        width 0.1
+         //off
+        width 1
         // active-color "#383838FF"
-        active-color "#2b2b2b"
-        inactive-color "#6e6e6e80"
+        active-color "#474747CC"
+        inactive-color "#474747"
     }
     shadow {
          on
          draw-behind-window false
-        softness 9
-        spread 4
-        offset x=0 y=0
+        softness 7
+        spread 3
+        offset x=0 y=2
         color "#000000cc"
     }
 }

@@ -1,12 +1,15 @@
 // Layer Rules
 layer-rule {
 	match namespace="^awww-daemon$"
+   match namespace="^widget-eww$"
 
     //match namespace="^mpv$"
 	place-within-backdrop true
 }
+
 layer-rule {
     match namespace="^rofi$"
+    match namespace="tassk"
     geometry-corner-radius 30
     background-effect {
         blur true
