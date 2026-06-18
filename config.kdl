@@ -6,7 +6,7 @@
 //spawn-at-startup "blueman-applet"
 //spawn-at-startup "sh" "-c" "~/startup-apps.sh"
 
-//spawn-at-startup "awww-daemon"
+spawn-at-startup "awww-daemon"
 spawn-at-startup "eww" "daemon"
 spawn-at-startup "eww" "open" "bar"
 spawn-at-startup "eww" "open" "widget"
@@ -39,7 +39,7 @@ output "eDP-1" {
    variable-refresh-rate
     //background-color "#4c5b6b"
     //can use integer;example use 1.5 for 150% scale.
-    scale 1
+    scale 1.5
     transform "normal"
     position x=0 y=0
     backdrop-color "#65578f"
@@ -94,7 +94,7 @@ environment{
 }
 prefer-no-csd
 overview{
-    zoom 0.3
+    zoom 0.19
 }
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 // Input device configuration.
@@ -118,7 +118,7 @@ input {
     mouse {
         // off
         // natural-scroll
-         accel-speed -0.7
+         accel-speed 0.3
         accel-profile "flat"
         scroll-factor 1.0
         // scroll-factor vertical=1.0 horizontal=-2.0
@@ -143,7 +143,7 @@ cursor {
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
-    gaps 10
+    gaps 7
      empty-workspace-above-first
      //default-column-display "tabbed"
     center-focused-column "never"
@@ -158,7 +158,7 @@ layout {
         proportion 1.0
         fixed 720
         }
-    default-column-width { proportion 0.8; }
+    default-column-width { proportion 1.0; }
     // 0.1 -> 1A (17 in decimal)
     // 0.2 -> 33 (51 in decimal)
     // 0.3 -> 4D (77 in decimal)

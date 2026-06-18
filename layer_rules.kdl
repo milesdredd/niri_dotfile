@@ -6,13 +6,21 @@ layer-rule {
     //match namespace="^mpv$"
 	place-within-backdrop true
 }
+layer-rule{
+    match namespace="^top-panel$"
+    opacity 0.75
+    background-effect {
+        blur false
+        xray false
+    }
+}
 
 layer-rule {
     match namespace="^rofi$"
-    match namespace="tassk"
-    geometry-corner-radius 30
+    match namespace="top-panel-blur"
+    geometry-corner-radius 0
     background-effect {
         blur true
-        xray true
+        xray false
     }
 }

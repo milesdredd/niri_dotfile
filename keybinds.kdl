@@ -9,6 +9,7 @@ binds {
     Alt+Space {spawn "bash" "-c" "/home/milesdredd/.local/share/bin/surf.sh"; }
     Mod+Space {spawn "bash" "-c" "/home/milesdredd/.local/share/bin/search.sh"; }
     Mod+Ctrl+B {spawn "bash" "-c" "/home/milesdredd/.config/niri/struts.sh";}
+    Mod+Ctrl+T {spawn "eww" "open" "task";}
     Mod+Backspace {spawn "systemctl" "suspend";}
     Mod+N {spawn "bash" "-c" "swaync-client -t";}
     

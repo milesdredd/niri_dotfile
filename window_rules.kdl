@@ -62,5 +62,14 @@ window-rule {
     }
 }
 
+//brave fake fullscreen
+window-rule {
+    match app-id="brave-browser"
+
+    // not implemented yet !
+   // open-windowed-fullscreen true
+
+}
+
 
 
