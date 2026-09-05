@@ -8,6 +8,7 @@
 
 spawn-at-startup "awww-daemon"
 spawn-at-startup "eww" "daemon"
+spawn-at-startup "eww" "open" "barbgW"
 spawn-at-startup "eww" "open" "bar"
 spawn-at-startup "eww" "open" "widget"
 spawn-at-startup "eww" "open" "task"
@@ -39,20 +40,20 @@ output "eDP-1" {
    variable-refresh-rate
     //background-color "#4c5b6b"
     //can use integer;example use 1.5 for 150% scale.
-    scale 1.5
+    scale 1
     transform "normal"
     position x=0 y=0
     backdrop-color "#65578f"
 }
 output "DP-1"{
-    //rn11 display
-    off
+    //rn11 display//
+        off
 // wayvnc 0.0.0.0 5900 --render-cursor --output DP-1
-    //   mode "1024x768@60.004"
+mode "1024x768@60.004"
    // mode "640x480@59.940"
-   mode "848x480@60.000"
+   //mode "848x480@60.000"
     position x=700 y=-480
-    //transform "90"
+    transform "90"
     scale 1
 
     //background-color "#9661ff"
@@ -66,7 +67,7 @@ debug {
     force-disable-connectors-on-resume
     emulate-zero-presentation-time
     disable-resize-throttling
-    render-drm-device "/dev/dri/renderD128"
+    render-drm-device "/dev/dri/renderD12"
     deactivate-unfocused-windows
 //     Intel:
 //     /dev/dri/card1
@@ -126,19 +127,22 @@ input {
         // scroll-button 273
         // scroll-button-lock
         // left-handed
-         middle-emulation
+         //middle-emulation
     }
     focus-follows-mouse
 }
 cursor {
     hide-when-typing
     hide-after-inactive-ms 1000
-   xcursor-theme "GoogleDot-White"
+   xcursor-theme "macOS"
 //Bibata-Modern-Ice
-//
+//GoogleDot-White
 //Elastic
 //Night Diamond (Blue)
-    xcursor-size 8
+//
+//XCursor-Pro-Light
+
+    xcursor-size 22
 }
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
@@ -147,7 +151,7 @@ layout {
      empty-workspace-above-first
      //default-column-display "tabbed"
     center-focused-column "never"
-    //always-center-single-column
+    always-center-single-column
     preset-column-widths {
        proportion 0.85
        proportion 0.5
@@ -175,8 +179,9 @@ layout {
    // draw-border-with-background
     border {
         // off
-        width 6
-        active-color "#262626"
+        width 1//6
+        //active-color "#262626"
+        active-color "#1a1a1a"
    //   active-gradient from="#53527a" to="#527a74" angle=45 in="oklch decreasing hue"
         inactive-color "#262626"
         urgent-color "#de4923"

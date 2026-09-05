@@ -30,6 +30,13 @@ window-rule {
     default-column-width { fixed 1080; }
 }
 window-rule {
+    match title="Picture in picture"
+
+    max-width 600
+    // min-height 656
+
+}
+window-rule {
     match title=".* - YouTube$" is-floating=true
     // match app-id=r#"mpv"# is-floating=true
     // min-width 1164

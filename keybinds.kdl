@@ -7,13 +7,14 @@ binds {
    // Mod+Shift+Slash { show-hotkey-overlay; }
    // Alt+Tab {focus-window-previous;}
     Alt+Space {spawn "bash" "-c" "/home/milesdredd/.local/share/bin/surf.sh"; }
+
     Mod+Space {spawn "bash" "-c" "/home/milesdredd/.local/share/bin/search.sh"; }
     Mod+Ctrl+B {spawn "bash" "-c" "/home/milesdredd/.config/niri/struts.sh";}
     Mod+Ctrl+T {spawn "eww" "open" "task";}
     Mod+Backspace {spawn "systemctl" "suspend";}
     Mod+N {spawn "bash" "-c" "swaync-client -t";}
     
-    Alt+r {spawn "bash" "-c" "pkill eww && eww open widget && eww open bar && eww open quickbar && eww open task";}
+    Alt+r {spawn "bash" "-c" "pkill eww && eww open barbgW && eww open widget && eww open bar  && eww open quickbar && eww open task";}
     
     Mod+Ctrl+BracketLeft {spawn "bash" "-c" "eww update rqb=false";}
     Mod+Ctrl+BracketRight {spawn "bash" "-c" "eww update rqb=true";}
@@ -21,6 +22,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+A hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun" "-theme" "/home/milesdredd/.config/rofi/styles/style_3.rasi"; }
+     Mod+S {spawn "bash" "-c" "/home/milesdredd/.local/bin/scrcpy-rofi-app"; }
     Super+Alt+P hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
     Mod+E {spawn "dolphin";}
     Mod+Ctrl+v {spawn "bash" "-c" "cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy";}
